@@ -8,20 +8,23 @@ export const useFavCountry = defineStore('favCountry', {
     }
   },
   actions: {
-    updateList(countryName) {
+    updateList(countryCca3) {
       const countryExistInList = this.favCountryList.some(
-        item => item == countryName
+        item => item.cca3 == countryCca3
       )
       if (!countryExistInList) {
-        // const indexOfCountry = this.countriesList.findIndex(
-        //   item => item.cca3 == countryName
-        // )
+        const indexOfCountry = this.countriesList.findIndex(
+          item => item.cca3 == countryCca3
+        )
         // console.log(indexOfCountry)
-        this.favCountryList.push(countryName)
+        this.favCountryList.push(this.countriesList[indexOfCountry])
       } else if (countryExistInList) {
-        const index = this.favCountryList.findIndex(item => item == countryName)
+        const index = this.favCountryList.findIndex(item => item.cca3 === countryCca3)
         this.favCountryList.splice(index, 1)
       }
     }
+  },
+  getters: {
+
   }
 })
