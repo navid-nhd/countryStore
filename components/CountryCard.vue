@@ -28,9 +28,12 @@
     <div class="text-lg">
       Languages:
       <ul class="flex">
-        <li v-for="(i, index) in countryInfo.languages" :key="index">{{ i }}<span
-            v-showS="index != countryInfo.languages.length - 1">
-            -</span>{{ index }} --- {{ countryInfo.languages.length }}</li>
+        <li v-for="(i, index) in languagelist" :key="index">
+          {{ i }}
+          <span class="p-0.5" v-show="index != (languagelist.length - 1)">
+            -
+          </span>
+        </li>
       </ul>
     </div>
   </div>
@@ -48,6 +51,13 @@ const addToFav = (param) => {
 const countryInfo = computed(() => {
   try {
     return useFavCountryStore().totalCountriesList.find(item => item.cca3 == props.cca3)
+  } catch (error) {
+    return {}
+  }
+})
+const languagelist = computed(() => {
+  try {
+    return Object.values(countryInfo.value.languages)
   } catch (error) {
     return {}
   }
