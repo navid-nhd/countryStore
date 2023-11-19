@@ -19,7 +19,7 @@ export const useFavCountryStore = defineStore("useFavCountryStore", {
     },
     updateFavList(countryCca3) {
       const index = this.totalCountriesList.findIndex(
-            (item) => item.cca3 === countryCca3
+            (item) => item.cca3 == countryCca3
           );
           this.totalCountriesList[index].isFav = this.totalCountriesList[index].isFav ? false : true
       // const countryExistInList = this.favCountryList.some(

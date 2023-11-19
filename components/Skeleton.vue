@@ -1,5 +1,5 @@
 <template>
-    <div class="h-[380px]  bg-slate-100 p-8 rounded-2xl hover:shadow-lg hover:cursor-pointer flex flex-col animate-pulse">
+    <div class="h-[450px]  bg-slate-100 p-8 rounded-2xl hover:shadow-lg hover:cursor-pointer flex flex-col animate-pulse">
         <div class="w-full ">
             <div class="flex-shrink-0">
                 <span class="w-[240px] h-[120px] block bg-gray-200  dark:bg-gray-700"></span>

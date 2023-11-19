@@ -1,6 +1,5 @@
 <template>
   <div>
-
     <main class="">
       <div class="container mx-auto">
         <!-- skeleton -->
@@ -18,10 +17,7 @@
             </div>
           </li>
         </ul>
-
-
       </div>
-
     </main>
   </div>
 </template>
@@ -40,14 +36,13 @@ const countryList = computed(() => {
     return []
   }
 });
-console.log(countryList.value[0])
-const favoriteList = computed(() => {
-  try {
-    return useFavCountryStore().favCountryList
-  } catch (error) {
-    return []
-  }
-})
+// const favoriteList = computed(() => {
+//   try {
+//     return useFavCountryStore().favCountryList
+//   } catch (error) {
+//     return []
+//   }
+// })
 // import { ref } from 'vue'
 //   const countries = ref([])
 
