@@ -1,22 +1,29 @@
 <template>
-  <main class="bg-slate-50">
-    <div class="container mx-auto">
-      <div>
-        <NuxtLink to="/favPage" class="bg-red-200 rounded-lg px-4 py-2">
-          <button>
-            go to favorite list! ({{ useFavCountryStore().selectedFavoriteList.length }})
-          </button>
-        </NuxtLink>
+  <div>
+
+    <main class="">
+      <div class="container mx-auto">
+        <!-- skeleton -->
+        <ul class="flex flex-wrap pt-11" v-show="!countryList.length">
+          <li class="w-1/4 basis-1/4" v-for="i in 8" :key="i">
+            <div class="p-2">
+              <Skeleton />
+            </div>
+          </li>
+        </ul>
+        <ul class="flex flex-wrap pt-11" v-show="countryList.length">
+          <li class="w-1/4 basis-1/4" v-for="(country, index) in countryList" :key="country.cca3">
+            <div class="p-2">
+              <CountryCard :cca3="country.cca3" />
+            </div>
+          </li>
+        </ul>
+
+
       </div>
-      <ul class="flex flex-wrap pt-11">
-        <li class="w-1/4 basis-1/4" v-for="(country, index) in countryList" :key="country.cca3">
-          <div class="p-2">
-            <CountryCard :cca3="country.cca3" />
-          </div>
-        </li>
-      </ul>
-    </div>
-  </main>
+
+    </main>
+  </div>
 </template>
 <script setup>
 import { useFavCountryStore } from '@/stores/favCountries.js'
@@ -63,3 +70,4 @@ const favoriteList = computed(() => {
 // };
 // fetchCountries();
 </script>
+<style scoped></style>
