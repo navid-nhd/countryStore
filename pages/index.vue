@@ -3,16 +3,31 @@
     <main class="">
       <div class="container mx-auto">
         <!-- skeleton -->
-        <ul class="flex flex-wrap pt-11" v-show="!countryList.length">
-          <li class="w-1/4 basis-1/4" v-for="i in 8" :key="i">
+        <ul
+          class="flex flex-wrap items-stretch stre pt-11"
+          v-show="!countryList.length"
+        >
+          <li
+            class="lg:w-1/4 lg:basis-1/4 md:w-1/2 md:basis-1/2 sm:w-full sm:basis-full"
+            v-for="i in 8"
+            :key="i"
+          >
+            /
             <div class="p-2">
               <Skeleton />
             </div>
           </li>
         </ul>
-        <ul class="flex flex-wrap pt-11" v-show="countryList.length">
-          <li class="w-1/4 basis-1/4" v-for="(country, index) in countryList" :key="country.cca3">
-            <div class="p-2">
+        <ul
+          class="flex flex-wrap pt-11 items-stretch"
+          v-show="countryList.length"
+        >
+          <li
+            class="lg:w-1/4 lg:basis-1/4 md:w-1/2 md:basis-1/2 sm:w-full sm:basis-full"
+            v-for="(country, index) in countryList"
+            :key="country.cca3"
+          >
+            <div class="p-2 h-full">
               <CountryCard :cca3="country.cca3" />
             </div>
           </li>
@@ -22,18 +37,18 @@
   </div>
 </template>
 <script setup>
-import { useFavCountryStore } from '@/stores/favCountries.js'
+import { useFavCountryStore } from "@/stores/favCountries.js";
 const fetchCountries = async () => {
   const { data } = await useFetch("https://restcountries.com/v3.1/all");
-  useFavCountryStore().fetchAllCountries(data.value)
+  useFavCountryStore().fetchAllCountries(data.value);
 };
 fetchCountries();
 
 const countryList = computed(() => {
   try {
-    return useFavCountryStore().totalCountriesList
+    return useFavCountryStore().totalCountriesList;
   } catch (error) {
-    return []
+    return [];
   }
 });
 // const favoriteList = computed(() => {
@@ -55,7 +70,6 @@ const countryList = computed(() => {
 //   getCountries()
 // import { useFavCountryStore } from "@/stores/favCountries.js";
 // const store = useFavCountryStore();
-
 
 // const fetchCountries = async () => {
 //   countryList.value = [];
